@@ -54,3 +54,7 @@ const target = 4;
 
 const output = findTwoSumWithSet(array, target);
 console.log("First Combination For “4” : "); console.log(output);
+
+//* Then merge the array into a single array with sorting ( ascending ) order,
+const mergedArray = output.flat().sort((a, b) => a - b);
+console.log("Merge Into a single Array : "); console.log(mergedArray);
