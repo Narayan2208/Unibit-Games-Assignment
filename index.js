@@ -108,7 +108,7 @@ function arraysAreEqual(arr1, arr2) {
     return true; // Otherwise, the arrays are equal
 }
 
-const numsArr = [-6, -4, 1, 2, 2, 2, 3, 8]; 
+const numsArr = mergedArray; 
 const targetValue = 8; 
 const subsequences = findSubsequencesWithSum(numsArr, targetValue); // Find subsequences in the array that add up to the target value
 
