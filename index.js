@@ -58,3 +58,63 @@ console.log("First Combination For “4” : "); console.log(output);
 //* Then merge the array into a single array with sorting ( ascending ) order,
 const mergedArray = output.flat().sort((a, b) => a - b);
 console.log("Merge Into a single Array : "); console.log(mergedArray);
+
+
+// ? step double the target value and find again the combination of digits (can be multiple digits ) that are equal to the double targeted value and returned into a 2D array.
+function findSubsequencesWithSum(numsArr, targetValue) {
+    const result = []; // Initialize an empty array to store the subsequences
+    const current = []; // Initialize an empty array to store the current subsequence
+    backtrack(numsArr, targetValue, 0, current, result); // Call the backtracking function to find subsequences
+    return result; // Return the array of subsequences
+}
+
+function backtrack(numsArr, targetValue, index, current, result) {
+    if (targetValue === 0 && !isDuplicate(current, result)) { // If the target value is reached and the current subsequence is not a duplicate
+        result.push([...current]); // Add the current subsequence to the result array
+        return;
+    }
+
+    if (index === numsArr.length || targetValue < 0) { // If the index exceeds the array length or the target value becomes negative, backtrack
+        return;
+    }
+
+    for (let i = index; i < numsArr.length; i++) { // Iterate through the remaining array elements
+        current.push(numsArr[i]); // Add the current element to the current subsequence
+        backtrack(numsArr, targetValue - numsArr[i], i + 1, current, result); // Recursively call the backtrack function with updated target value and index
+        current.pop(); // Remove the current element from the current subsequence (backtrack)
+    }
+}
+
+function isDuplicate(current, result) {
+    for (const arr of result) { // Iterate through the result array
+        if (arraysAreEqual(current, arr)) { // If the current subsequence is equal to any subsequence in the result array, it is a duplicate
+            return true;
+        }
+    }
+    return false; // Otherwise, it is not a duplicate
+}
+
+function arraysAreEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) { // If the arrays have different lengths, they are not equal
+        return false;
+    }
+
+    for (let i = 0; i < arr1.length; i++) { 
+        if (arr1[i] !== arr2[i]) { // If any elements at the same index differ, the arrays are not equal
+            return false;
+        }
+    }
+
+    return true; // Otherwise, the arrays are equal
+}
+
+const numsArr = [-6, -4, 1, 2, 2, 2, 3, 8]; 
+const targetValue = 8; 
+const subsequences = findSubsequencesWithSum(numsArr, targetValue); // Find subsequences in the array that add up to the target value
+
+console.log("Second Combination For “8” : "); 
+console.log("[");
+subsequences.forEach(subsequence => { // Iterate through the subsequences
+    console.log(subsequence); // Print each subsequence
+});
+console.log("]");
