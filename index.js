@@ -19,10 +19,10 @@ const array = [1, 3, 2, 2, -4, -6, -2, 8];
 const target = 4;
 
 const output = findTwoSum(array, target);
-console.log(output);
+console.log("First Combination For “4” : "); console.log(output);
 
 
 const mergedArray = output.flat().sort((a, b) => a - b);
-console.log("First Combination For “4” : "); console.log(mergedArray);
+console.log("Merge Into a single Array : "); console.log(mergedArray);
 
 
