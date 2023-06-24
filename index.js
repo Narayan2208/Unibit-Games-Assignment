@@ -21,3 +21,8 @@ const target = 4;
 const output = findTwoSum(array, target);
 console.log(output);
 
+
+const mergedArray = output.flat().sort((a, b) => a - b);
+console.log("First Combination For “4” : "); console.log(mergedArray);
+
+
